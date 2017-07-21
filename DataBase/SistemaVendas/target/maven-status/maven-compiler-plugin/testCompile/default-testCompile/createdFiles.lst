@@ -1,0 +1,4 @@
+br\com\k21\VendedorDBTest.class
+br\com\k21\infra\BaseDBTest.class
+br\com\k21\VendaDAOTest.class
+br\com\k21\infra\DbUnitDataLoader.class
