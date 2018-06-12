@@ -14,60 +14,33 @@ import br.com.k21.infra.BaseDBTest;
 public class VendaDAOTest extends BaseDBTest {
 
 	@Test
-	public void testTotal_Para_Vendedor_Inexistente() {
+	public void testeVendedorSemVendas() {
 		// Arrange
-		Vendedor vendedor = new Vendedor();
-		int entradaIdVendedor = 99;
-		vendedor.setId(entradaIdVendedor);
-		int entradaAno = 2001;
-		double resultado;
-		double esperado = 0.0;
+		int idVendedor = 3;
+		int ano = 2016;		
+		double valorTotalVendasEsperado = 0;
+		double valorTotalRetornado;
 		
 		// act
 		VendaDAO.setEntityManager(emf.createEntityManager());
-		resultado = VendaDAO.buscarTotalDeVendasPorVendedorEAno(vendedor, entradaAno);
+		valorTotalRetornado = VendaDAO.buscarTotalDeVendasPorVendedorEAno(idVendedor, ano);
 		
 		// asserts
-		assertEquals(esperado, resultado);
-		
+		assertEquals(valorTotalVendasEsperado, valorTotalRetornado);		
 	}
 	
 	@Test
-	public void testTotal_Para_Vendedor_com_1_venda() {
-		// Arrange
-		Vendedor vendedor = new Vendedor();
-		int entradaIdVendedor = 2;
-		vendedor.setId(entradaIdVendedor);
-		int entradaAno = 2011;
-		double resultado;
-		double esperado = 100.0;
+	public void testeVendedorCincoRetorna145() {
+		int idVendedor = 5;
+		int ano = 2016;		
+		double valorTotalVendasEsperado = 145;
+		double valorTotalRetornado;
 		
 		// act
 		VendaDAO.setEntityManager(emf.createEntityManager());
-		resultado = VendaDAO.buscarTotalDeVendasPorVendedorEAno(vendedor, entradaAno);
+		valorTotalRetornado = VendaDAO.buscarTotalDeVendasPorVendedorEAno(idVendedor, ano);
 		
 		// asserts
-		assertEquals(esperado, resultado);
-		
+		assertEquals(valorTotalVendasEsperado, valorTotalRetornado);		
 	}
-	
-	@Test
-	public void testTotal_Para_Vendedor_com_2_vendas_no_ano() {
-		// Arrange
-		Vendedor vendedor = new Vendedor();
-		int entradaIdVendedor = 3;
-		vendedor.setId(entradaIdVendedor);
-		int entradaAno = 2011;
-		double resultado;
-		double esperado = 2010.0;
-		
-		// act
-		VendaDAO.setEntityManager(emf.createEntityManager());
-		resultado = VendaDAO.buscarTotalDeVendasPorVendedorEAno(vendedor, entradaAno);
-		
-		// asserts
-		assertEquals(esperado, resultado);
-		
-	}
-
 }

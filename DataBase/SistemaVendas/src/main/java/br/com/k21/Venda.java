@@ -18,7 +18,9 @@ public class Venda
     private Date dataVenda;
     
     private Double valor;
-       
+    
+    private long vendedor_id;
+    
 	public long getId() {
 		return id;
 	}
@@ -41,6 +43,14 @@ public class Venda
 
 	public void setDataVenda(Date dataVenda) {
 		this.dataVenda = dataVenda;
+	}
+
+	public long getVendedorId() {
+		return vendedor_id;
+	}
+
+	public void setVendedorId(long vendedorId) {
+		this.vendedor_id = vendedorId;
 	}
 
 }
